@@ -4,7 +4,8 @@ const  parseStringAsArray = require('../utils/parseStringAsArray')
 module.exports = {
 
     async index(req, res) {
-        const devs = await Dev.find();
+        const { page=1 } = req.query;
+        const devs = await Dev.paginate({/* condições para algum filtro*/}, {page, limit:10});
         return await res.json(devs)
     },
     
