@@ -14,9 +14,7 @@ routes.get('/devs', DevController.index)
 
 routes.post('/devs', DevController.store)
 
-// routes.put('/users/:id', (req, res)=> {
-    
-// })
+routes.put('/users/:id', DevController.update)
 
 routes.delete('/users/:id', DevController.destroy)
 

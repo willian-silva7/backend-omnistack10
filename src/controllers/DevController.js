@@ -37,12 +37,18 @@ module.exports = {
     },
 
     async update(req, res){
+         const { techs } = req.body;
+         const {id} = req.params
+         const techArrays = parseStringAsArray(techs)
+
+         const dev = await Dev.findByIdAndUpdate(id, {techs:techArrays}, {new:true})
+         return res.json(dev)
 
     },
 
     async destroy(req, res){
-        const {id} = req.params;
-        return await Dev.deleteOne({id});
+        await Dev.findByIdAndRemove(req.params.id);
+        return  res.json({message:"usuario apagado com sucesso"})
     },
 
 };
